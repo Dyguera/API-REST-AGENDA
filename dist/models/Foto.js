@@ -1,10 +1,10 @@
-import Sequelize, { Model } from 'sequelize';
-import appConfig from '../config/appConfig';
-export default class Foto extends Model {
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
+var _appConfig = require('../config/appConfig'); var _appConfig2 = _interopRequireDefault(_appConfig);
+ class Foto extends _sequelize.Model {
   static init(sequelize) {
     super.init({
       originalname: {
-        type: Sequelize.STRING,
+        type: _sequelize2.default.STRING,
         defaultValue: '',
         validate: {
           notEmpty: {
@@ -13,7 +13,7 @@ export default class Foto extends Model {
         },
       },
       filename: {
-        type: Sequelize.STRING,
+        type: _sequelize2.default.STRING,
         defaultValue: '',
         validate: {
           notEmpty: {
@@ -22,9 +22,9 @@ export default class Foto extends Model {
         },
       },
       url: {
-        type: Sequelize.VIRTUAL,
+        type: _sequelize2.default.VIRTUAL,
         get(){
-          return `${appConfig.url}/images/${this.getDataValue('filename')}`;
+          return `${_appConfig2.default.url}/images/${this.getDataValue('filename')}`;
         }
       },
     },
@@ -40,4 +40,4 @@ export default class Foto extends Model {
     // this.hasOne(models.Foto, { foreignKey: 'aluno_id' })
     //test
   }
-}
+} exports.default = Foto;
